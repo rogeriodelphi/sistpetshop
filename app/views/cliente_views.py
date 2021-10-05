@@ -24,7 +24,7 @@ def cadastrar_cliente(request):
                 cliente_novo = cliente.Cliente(nome=nome, email=email, data_nascimento=data_nascimento,
                                                profissao=profissao, cpf=cpf, endereco=endereco_bd)
                 cliente_service.cadastrar_cliente(cliente_novo)
-                return redirect('listar_clientes')
+                # return redirect('listar_clientes')
     else:
         form_cliente = ClienteForm()
         form_endereco = EnderecoClienteForm()
