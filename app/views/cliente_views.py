@@ -7,9 +7,9 @@ from ..forms.endereco_forms import EnderecoClienteForm
 from ..entidades import cliente, endereco
 from ..services import cliente_service, endereco_service
 
-# def listar_clientes(request):
-#     clientes = cliente_service.listar_clientes()
-#     return render(request, 'clientes/lista_clientes.html', {'clientes': clientes})
+def listar_clientes(request):
+    clientes = cliente_service.listar_clientes()
+    return render(request, 'clientes/lista_clientes.html', {'clientes': clientes})
 
 
 # def listar_cliente_id(request, id):
