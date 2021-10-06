@@ -1,9 +1,33 @@
+import datetime
+
 from django.shortcuts import render, redirect
 
 from ..forms.cliente_forms import ClienteForm
 from ..forms.endereco_forms import EnderecoClienteForm
 from ..entidades import cliente, endereco
 from ..services import cliente_service, endereco_service
+
+# def listar_clientes(request):
+#     clientes = cliente_service.listar_clientes()
+#     return render(request, 'clientes/lista_clientes.html', {'clientes': clientes})
+
+
+# def listar_cliente_id(request, id):
+#     cliente = cliente_service.listar_cliente_id(id)
+#     pets = pet_service.listar_pets(id)
+#     consultas = consulta_service.listar_consultas_pets(id)
+#     return render(request, 'clientes/lista_cliente.html', {'cliente': cliente, 'pets': pets, 'consultas': consultas})
+
+
+# def remover_cliente(request, id):
+#     cliente = cliente_service.listar_cliente_id(id)
+#     endereco = endereco_service.listar_endereco_id(cliente.endereco.id)
+#     if request.method == "POST":
+#         cliente_service.remover_cliente(cliente)
+#         endereco_service.remover_endereco(endereco)
+#         return redirect('listar_clientes')
+#     return render(request, 'clientes/confirma_exclusao.html', {'cliente': cliente})
+
 
 def cadastrar_cliente(request):
     if request.method == "POST":
@@ -24,9 +48,8 @@ def cadastrar_cliente(request):
                 cliente_novo = cliente.Cliente(nome=nome, email=email, data_nascimento=data_nascimento,
                                                profissao=profissao, cpf=cpf, endereco=endereco_bd)
                 cliente_service.cadastrar_cliente(cliente_novo)
-                # return redirect('listar_clientes')
+                return redirect('listar_clientes')
     else:
         form_cliente = ClienteForm()
         form_endereco = EnderecoClienteForm()
     return render(request, 'clientes/form_cliente.html', {'form_cliente': form_cliente, 'form_endereco': form_endereco})
-
