@@ -12,11 +12,9 @@ def listar_clientes(request):
     return render(request, 'clientes/lista_clientes.html', {'clientes': clientes})
 
 
-# def listar_cliente_id(request, id):
-#     cliente = cliente_service.listar_cliente_id(id)
-#     pets = pet_service.listar_pets(id)
-#     consultas = consulta_service.listar_consultas_pets(id)
-#     return render(request, 'clientes/lista_cliente.html', {'cliente': cliente, 'pets': pets, 'consultas': consultas})
+def listar_cliente_id(request, id):
+    cliente = cliente_service.listar_cliente_id(id)
+    return render(request, 'clientes/lista_cliente.html', {'cliente': cliente})
 
 
 # def remover_cliente(request, id):
