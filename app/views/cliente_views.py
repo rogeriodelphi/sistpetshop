@@ -66,3 +66,12 @@ def editar_cliente(request, id):
             cliente_service.editar_cliente(cliente_editar, cliente_novo)
             return redirect('listar_clientes')
     return render(request, 'clientes/form_cliente.html', {'form_cliente': form_cliente ,'form_endereco': form_endereco})
+
+def remover_cliente(request, id):
+    cliente = cliente_service.listar_cliente_id(id)
+    endereco = endereco_service.listar_endereco_id(cliente.endereco.id)
+    if request.method == "POST":
+        cliente_service.remover_cliente(cliente)
+        endereco_service.remover_endereco(endereco)
+        return redirect('listar_clientes')
+    return render(request, 'clientes/confirma_exclusao.html', {'cliente': cliente})
