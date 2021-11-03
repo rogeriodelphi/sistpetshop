@@ -19,3 +19,7 @@ def inserir_pet(request, id):
     else:
         form_pet = pet_forms.PetForm()
     return render(request, 'pets/form_pet.html', {'form_pet': form_pet})
+
+def listar_pet_id(request, id):
+    pet = pet_service.listar_pet_id(id)
+    return render(request, 'pets/lista_pet.html', {'pet': pet})
