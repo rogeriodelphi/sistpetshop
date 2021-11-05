@@ -1,11 +1,10 @@
-import datetime
-
 from django.shortcuts import render, redirect
 
 from ..forms.cliente_forms import ClienteForm
 from ..forms.endereco_forms import EnderecoClienteForm
 from ..entidades import cliente, endereco
 from ..services import cliente_service, endereco_service, pet_service
+
 
 def listar_clientes(request):
     clientes = cliente_service.listar_clientes()
@@ -15,7 +14,7 @@ def listar_clientes(request):
 def listar_cliente_id(request, id):
     cliente = cliente_service.listar_cliente_id(id)
     pets = pet_service.listar_pets(id)
-    return render(request, 'clientes/lista_cliente.html', {'cliente': cliente, 'pets':pets})
+    return render(request, 'clientes/lista_cliente.html', {'cliente': cliente, 'pets': pets})
 
 
 def cadastrar_cliente(request):
@@ -66,7 +65,8 @@ def editar_cliente(request, id):
                                            profissao=profissao, cpf=cpf, endereco=endereco_editado)
             cliente_service.editar_cliente(cliente_editar, cliente_novo)
             return redirect('listar_clientes')
-    return render(request, 'clientes/form_cliente.html', {'form_cliente': form_cliente ,'form_endereco': form_endereco})
+    return render(request, 'clientes/form_cliente.html', {'form_cliente': form_cliente, 'form_endereco': form_endereco})
+
 
 def remover_cliente(request, id):
     cliente = cliente_service.listar_cliente_id(id)

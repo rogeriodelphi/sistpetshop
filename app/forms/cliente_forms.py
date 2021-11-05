@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import TextInput, DateInput
+from django.forms import DateInput
 
 from ..models import Cliente
 
