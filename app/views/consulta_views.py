@@ -29,3 +29,7 @@ def inserir_consulta(request, id):
 def listar_consulta_id(request, id):
     consulta = consulta_service.listar_consulta(id)
     return render(request, 'consultas/lista_consulta.html', {'consulta': consulta})
+
+def listar_consulta_id(request, id):
+    consulta = consulta_service.listar_consulta(id)
+    return render(request, 'consultas/lista_consulta.html', {'consulta': consulta})
