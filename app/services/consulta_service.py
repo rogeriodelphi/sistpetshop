@@ -6,5 +6,10 @@ def cadastar_consulta(consulta):
                                              medicamento_atual=consulta.medicamento_atual,
                                              medicamentos_prescritos=consulta.medicamentos_prescritos,
                                              exames_prescritos=consulta.exames_prescritos)
-
     consulta_bd.save()
+
+def listar_consultas(id):
+    consultas = ConsultaPet.objects.filter(pet=id).all()
+    return consultas
+
+
