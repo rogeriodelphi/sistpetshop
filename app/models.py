@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django_localflavor_br.br_states import STATE_CHOICES
 
@@ -53,3 +54,16 @@ class ConsultaPet(models.Model):
     exames_prescritos = models.TextField(null=False, blank=True)
 
     objects = models.Manager()
+
+
+class Funcionario(AbstractUser):
+    CARGO_CHOICES = [
+        (1, 'Veterinario'),
+        (2, 'Financeiro'),
+        (3, 'Atendimento'),
+    ]
+    nome = models.CharField(max_length=50, null=False, blank=False)
+    nascimento = models.DateField(null=False, blank=False)
+    cargo = models.IntegerField(choices=CARGO_CHOICES, null=False, blank=False)
+
+    # objects = models.Manager()
