@@ -1,5 +1,6 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
@@ -19,3 +20,8 @@ def login_usuario(request):
     else:
         form_login = AuthenticationForm()
     return render(request, 'autenticacao/login.html', {'form_login': form_login})
+
+@login_required()
+def deslogar_usuario(request):
+    logout(request)
+    return redirect('login')

@@ -61,6 +61,7 @@ class Funcionario(AbstractUser):
         (1, 'Veterinario'),
         (2, 'Financeiro'),
         (3, 'Atendimento'),
+        (4, 'Analista de TI'),
     ]
     nome = models.CharField(max_length=50, null=False, blank=False)
     nascimento = models.DateField(null=False, blank=False)

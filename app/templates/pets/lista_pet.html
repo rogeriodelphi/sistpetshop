@@ -26,6 +26,7 @@ Listagem de Pet
                         </li>
                     </ul>
                     <br>
+                    {% if user.cargo == 1 %}
                     <div class="row">
                         <div class="col-md-12">
                             <a href="{% url 'cadastrar_consulta' pet.id %}" class="btn btn-primary btn-block">
@@ -33,6 +34,7 @@ Listagem de Pet
                             </a>
                         </div>
                     </div>
+                    {% endif %}
                 </div>
                 <!-- /.box-body -->
             </div>
