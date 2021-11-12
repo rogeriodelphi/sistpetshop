@@ -1,10 +1,11 @@
-{% extends "base.html" %}
-{% load meus_filtros %}
-{% block title %}
-Listagem de Consulta
-{% endblock title %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta</title>
+</head>
+<body>
 
-{% block content %}
 <section class="invoice">
     <div class="row">
         <div class="col-xs-12">
@@ -40,22 +41,7 @@ Listagem de Consulta
             <b>Exames Prescritos: </b> {{consulta.exames_prescritos}} <br>
         </div>
     </div>
-    <hr class="no-print">
-    <br>
-
-    <div class="row no-print">
-        <div class="col-xs-12">
-            <a href="{% url 'enviar_consulta' consulta.id %}">
-                <button type="button" class="btn btn-alert pull-left">
-                    <i class="fa fa-send"> Enviar por e-mail</i>
-                </button>
-            </a>
-            <button type="button" class="btn btn-primary pull-right" onclick="window.print();">
-                <i class="fa fa-print"> Imprimir</i>
-            </button>
-        </div>
-    </div>
-
 </section>
 
-{% endblock content %}
+</body>
+</html>

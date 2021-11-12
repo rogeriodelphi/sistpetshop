@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import user_passes_test, login_required
+from django.core.mail import send_mail
 from django.shortcuts import redirect, render
+from django.template.loader import render_to_string
 
 from ..forms import consulta_forms
 from ..services import pet_service, consulta_service
@@ -34,6 +36,13 @@ def listar_consulta_id(request, id):
     return render(request, 'consultas/lista_consulta.html', {'consulta': consulta})
 
 
-def listar_consulta_id(request, id):
+def enviar_email_consulta(request, id):
     consulta = consulta_service.listar_consulta(id)
-    return render(request, 'consultas/lista_consulta.html', {'consulta': consulta})
+    pet_consulta = pet_service.listar_pet_id(consulta.pet.id)
+    assunto = 'Resumo da consulta do seu Pet'
+    html_conteudo = render_to_string('consultas/consulta_email.html', {'consulta': consulta})
+    corpo_email = 'Resumo de sua consulta'
+    email_remetente = 'rbmdesenvolvimento@gmail.com'
+    email_destino = [pet_consulta.dono.email, ]
+    send_mail(assunto, corpo_email, email_remetente, email_destino, html_message=html_conteudo)
+    return redirect('listar_consulta_id', id)

@@ -4,6 +4,7 @@ from .views import (cliente_views,
                     consulta_views,
                     funcionario_views,
                     autenticacao_views,
+                    consulta_views,
                     )
 
 urlpatterns = [
@@ -20,4 +21,5 @@ urlpatterns = [
     path('listar_funcionarios', funcionario_views.listar_funcionarios, name='listar_funcionarios'),
     path('login', autenticacao_views.login_usuario, name='login'),
     path('logout', autenticacao_views.deslogar_usuario, name='logout'),
+    path('enviar_consulta/<int:id>', consulta_views.enviar_email_consulta, name='enviar_consulta'),
 ]
